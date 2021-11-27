@@ -28,6 +28,7 @@ public class TestDetailFragment extends Fragment {
     private NavController navController;
     private int position;
     private TestViewModel viewModel;
+    private String subjectId;
     private String testId;
     private long totalQusCount;
 
@@ -46,8 +47,10 @@ public class TestDetailFragment extends Fragment {
 
         navController = Navigation.findNavController(view);
         position = TestDetailFragmentArgs.fromBundle(getArguments()).getPosition();
+        //subjectId = (TestFragmentArgs.fromBundle(getArguments()).getSubjectId());
 
-        viewModel.getTestLiveData().observe(getViewLifecycleOwner(), new Observer<List<TestModel>>() {
+        // subjectId jak narazie musi istnieć w bazie
+        viewModel.getTestLiveData("angielski").observe(getViewLifecycleOwner(), new Observer<List<TestModel>>() {
             @Override
             public void onChanged(List<TestModel> testModels) {
                 TestModel test = testModels.get(position);

@@ -1,10 +1,12 @@
-package com.example.mytests;
+package com.example.mytests.views;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mytests.MainActivity;
+import com.example.mytests.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -43,6 +45,9 @@ public class RegistrationActivity extends AppCompatActivity {
         // https://github.com/byrmkus/QuizApp_JavaAndroid-MVVM-Firebase
         // https://github.com/developersamuelakram/QuizApp_Firebase_MVVM/tree/master/app/src/main/java/com/example/myquizapp
         // https://github.com/daimajia/AndroidSwipeLayout
+
+        // blog z dobrym info
+        // https://myenv.net/blog/android-architecture-components-data-binding/
 
     }
 }

@@ -6,9 +6,11 @@ import com.example.mytests.model.QuestionModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class QuestionRepository {
@@ -16,11 +18,11 @@ public class QuestionRepository {
 
     private FirebaseFirestore db;
     private String testId;
-    //private HashMap<String, Long> resultHashMap = new HashMap<>();
+    private HashMap<String, Long> resultHashMap = new HashMap<>();
     private OnQuestionLoad onQuestionLoad;
-    //private OnResultAdded onResultAdded;
+    private OnResultAdded onResultAdded;
     private String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    //private OnResultLoad onResultLoad;
+    private OnResultLoad onResultLoad;
 
     public QuestionRepository(OnQuestionLoad onQuestionLoad/*, OnResultAdded onResultAdded,OnResultLoad onResultLoad*/) {
 
@@ -32,8 +34,8 @@ public class QuestionRepository {
 
     }
 
-    /*public void addResults(HashMap<String, Object> resultMap) {
-        db.collection("Quiz").document(quizId)
+    public void addResults(HashMap<String, Object> resultMap) {
+        db.collection("Quiz").document(testId)
                 .collection("results").document(currentUserId)
                 .set(resultMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -45,10 +47,10 @@ public class QuestionRepository {
                 }
             }
         });
-    }*/
+    }
 
-    /*public void getResults() {
-        db.collection("Quiz").document(quizId)
+    public void getResults() {
+        db.collection("Quiz").document(testId)
                 .collection("results").document(currentUserId)
                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -66,7 +68,7 @@ public class QuestionRepository {
                 }
             }
         });
-    }*/
+    }
 
     public void setTestId(String testId) {
         this.testId = testId;
@@ -93,10 +95,10 @@ public class QuestionRepository {
 
     }
 
-    /*public interface OnResultLoad {
+    public interface OnResultLoad {
         void onResultLoad(HashMap<String, Long> resultHashMap);
         void onError(Exception e);
-    }*/
+    }
 
     public interface OnQuestionLoad {
         void onLoad(List<QuestionModel> questionModels);
@@ -104,9 +106,9 @@ public class QuestionRepository {
         void onError(Exception e);
     }
 
-    /*public interface OnResultAdded {
+    public interface OnResultAdded {
 
         boolean onSubmit();
         void onError(Exception e);
-    }*/
+    }
 }

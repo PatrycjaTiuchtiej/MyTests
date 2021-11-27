@@ -1,6 +1,7 @@
 package com.example.mytests.views;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
     private NavController navController;
     private TestViewModel viewModel;
     private TestAdapter adapter;
-    //private String subjectId;
+    private String subjectId;
     //private int position;
 
     @Override
@@ -45,6 +46,10 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
 
         navController = Navigation.findNavController(view);
         //position = TestFragmentArgs.fromBundle(getArguments()).getPosition();
+        subjectId = (TestFragmentArgs.fromBundle(getArguments()).getSubjectId());
+        Log.e("subjectId ", subjectId);
+        //subjectId = "angielski";
+        //viewModel.setSubjectId(subjectId);
 
         binding.recyclerListTest.setHasFixedSize(true);
         binding.recyclerListTest.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -52,7 +57,7 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
         adapter = new TestAdapter(this);
         binding.recyclerListTest.setAdapter(adapter);
 
-        viewModel.getTestLiveData().observe(getViewLifecycleOwner(), new Observer<List<TestModel>>() {
+        viewModel.getTestLiveData(subjectId).observe(getViewLifecycleOwner(), new Observer<List<TestModel>>() {
             @Override
             public void onChanged(List<TestModel> testModels) {
                 binding.progressTestList.setVisibility(View.GONE);

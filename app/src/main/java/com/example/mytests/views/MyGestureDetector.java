@@ -1,4 +1,4 @@
-package com.example.mytests;
+package com.example.mytests.views;
 
 /*import android.annotation.SuppressLint;
 import android.content.Context;
@@ -89,6 +89,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.example.mytests.R;
 
 public class MyGestureDetector extends GestureDetector.SimpleOnGestureListener {
     private ListView list;

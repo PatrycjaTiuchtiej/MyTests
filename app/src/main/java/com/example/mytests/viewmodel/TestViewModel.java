@@ -18,15 +18,17 @@ public class TestViewModel extends ViewModel implements TestRepository.onFiresto
 
 
     public TestViewModel() {
-        repository.getTestData();
+
     }
 
-    //public void setSubjectId(String subjectId){
-    //    repository.setSubjectId(subjectId);
-    //}
+    public void setSubjectId(String subjectId){
+        repository.setSubjectId(subjectId);
+    }
 
 
-    public MutableLiveData<List<TestModel>> getTestLiveData() {
+    public MutableLiveData<List<TestModel>> getTestLiveData(String subjectId ) {
+        this.setSubjectId(subjectId);
+        repository.getTestData();
         return testLiveData;
     }
 

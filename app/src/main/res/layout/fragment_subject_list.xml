@@ -70,9 +70,9 @@ tools:context=".views.SubjectFragment">
         android:backgroundTint="@color/purple_200"
         android:clickable="true"
         android:visibility="visible"
+        android:src="@drawable/plusbtn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/delete_button_id"

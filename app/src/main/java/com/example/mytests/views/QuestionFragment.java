@@ -22,6 +22,7 @@ import com.example.mytests.databinding.FragmentQuestionBinding;
 import com.example.mytests.model.QuestionModel;
 import com.example.mytests.viewmodel.QuestionViewModel;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class QuestionFragment extends Fragment implements View.OnClickListener {
@@ -215,7 +216,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         binding.btnOptionC.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.edit_pg));
     }
 
-/*    private void submitResults() {
+    private void submitResults() {
 
         HashMap<String, Object> resultMap = new HashMap<>();
         resultMap.put("correct", correctAnswer);
@@ -224,12 +225,12 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
         viewModel.addResults(resultMap);
 
-        QuizFragmentDirections.ActionQuizFragmentToResultFragment action =
+        /*QuizFragmentDirections.ActionQuizFragmentToResultFragment action =
                 QuizFragmentDirections.actionQuizFragmentToResultFragment();
         action.setQuizId(quizId);
-        navController.navigate(action);
+        navController.navigate(action);*/
 
-    }*/
+    }
 
     private void verifyAnswer(Button btn) {
 

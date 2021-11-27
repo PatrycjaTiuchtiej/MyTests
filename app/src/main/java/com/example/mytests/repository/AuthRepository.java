@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.mytests.R;
+import com.example.mytests.model.UserModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -23,6 +24,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -34,11 +37,13 @@ public class AuthRepository {
     private static final int RC_SIGN_IN = 123;
     private Application application;
     private MutableLiveData<FirebaseUser> firebaseUserMutableLiveData;
+    private MutableLiveData<UserModel> modelUserMutableLiveData;
     private MutableLiveData<FirebaseUser> firebaseGoogleMutableLiveData;
     private FirebaseAuth firebaseAuth;
-    private MutableLiveData<Boolean> isTeacher;
+    //private MutableLiveData<Boolean> isTeacher;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String userRole;
 
 
     public AuthRepository(Application application) {
@@ -102,9 +107,29 @@ public class AuthRepository {
                 } else {
                     Toast.makeText(application, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
+    }
+
+    public void setUserRole(String currentUserId) {
+        DocumentReference role = db.collection("Teachers").document(currentUserId);
+        role.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        userRole = "Teachers";
+                    } else {
+                        userRole = "Students";
+                    }
+                }
+            }
+        });
+    }
+
+    public String getUserRole() {
+        return userRole;
     }
 
     public void requestGoogleSignIn() {
@@ -163,7 +188,6 @@ public class AuthRepository {
     public void signOut() {
         firebaseAuth.signOut();
     }
-
 
 }
 

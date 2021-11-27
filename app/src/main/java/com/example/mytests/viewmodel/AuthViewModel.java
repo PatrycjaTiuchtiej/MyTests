@@ -40,6 +40,10 @@ public class AuthViewModel extends AndroidViewModel {
         repository.signIn(email, pass);
     }
 
+    public void setUserRole(String currentUserId) { repository.setUserRole(currentUserId); }
+
+    public String getUserRole() { return repository.getUserRole(); }
+
     public void signInWithGoogle() {
         repository.sigInGoogle();
     }

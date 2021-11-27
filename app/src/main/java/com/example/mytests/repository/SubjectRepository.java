@@ -35,43 +35,6 @@ public class SubjectRepository {
         this.onFirestoreTaskComplate= onFirestoreTaskComplate;
     }
 
-    /*
-    private void setRoleCollection(){
-        DocumentReference role = db.collection("Teachers").document(currentUserId);
-        role.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d("ROLE", "DocumentSnapshot data: " + document.getData());
-                        roleCollection = "Teachers";
-                    }
-                    else {
-                        Log.d("ROLE", "No such document");
-                        roleCollection = "Students";
-                    }
-                }
-                else {
-                    Log.d("ROLE", "get failed with ", task.getException());
-                }
-            }
-        });
-        Log.d("isTeacher", roleCollection);
-    }
-
-    private void setSubjectsOption()
-    {
-        setRoleCollection();
-        if(roleCollection=="Teachers"){
-            subjects = db.collection("Subjects").whereEqualTo("teacher_id", currentUserId);
-            Log.d("ROLE", "teacher");
-        }
-        else{
-            subjects = db.collection("Subjects").whereArrayContains("students", currentUserId);
-            Log.d("ROLE", "student");
-        }
-    }*/
 
     public void deleteSubject(String subjectId)
     {

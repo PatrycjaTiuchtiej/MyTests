@@ -14,16 +14,16 @@ public class TestRepository {
 
     private onFirestoreTaskComplate onFirestoreTaskComplate;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private String subjectId = "Subject0";
+    private String subjectId;
     //private CollectionReference reference = db.collection("Subjects");
 
     public TestRepository(onFirestoreTaskComplate onFirestoreTaskComplate) {
         this.onFirestoreTaskComplate= onFirestoreTaskComplate;
     }
 
-    //public void setSubjectId(String subjectId) {
-    //    this.subjectId = subjectId;
-    //}
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
+    }
 
     public void getTestData() {
 

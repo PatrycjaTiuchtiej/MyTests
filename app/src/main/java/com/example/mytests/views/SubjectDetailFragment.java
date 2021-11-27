@@ -77,7 +77,8 @@ public class SubjectDetailFragment extends Fragment {
             public void onClick(View view) {
                 SubjectDetailFragmentDirections.ActionSubjectDetailFragmentToTestFragment action =
                         SubjectDetailFragmentDirections.actionSubjectDetailFragmentToTestFragment();
-                //action.setSubjectId(subjectId);
+                action.setSubjectId(subjectId);
+                Log.e("subjectId ", subjectId);
                 //action.setTotalQueCount(totalQusCount);
                 action.setPosition(position);
                 navController.navigate(action);

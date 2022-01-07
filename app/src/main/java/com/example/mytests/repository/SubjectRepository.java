@@ -54,10 +54,11 @@ public class SubjectRepository {
                 });
     }
 
-    public void addSubject(String name) {
+    public void addSubject(String name, String description) {
 
         Map<String, Object> subject = new HashMap<>();
         subject.put("name", name);
+        subject.put("description", description);
         subject.put("teacher_id", currentUserId);
 
         db.collection("Subjects").document(name)

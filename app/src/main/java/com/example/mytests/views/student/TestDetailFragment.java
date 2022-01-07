@@ -1,4 +1,4 @@
-package com.example.mytests.views;
+package com.example.mytests.views.student;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,7 +50,7 @@ public class TestDetailFragment extends Fragment {
         //subjectId = (TestFragmentArgs.fromBundle(getArguments()).getSubjectId());
 
         // subjectId jak narazie musi istnieć w bazie
-        viewModel.getTestLiveData("angielski").observe(getViewLifecycleOwner(), new Observer<List<TestModel>>() {
+        viewModel.getTestLiveData("subject").observe(getViewLifecycleOwner(), new Observer<List<TestModel>>() {
             @Override
             public void onChanged(List<TestModel> testModels) {
                 TestModel test = testModels.get(position);

@@ -32,8 +32,8 @@ public class SubjectViewModel extends ViewModel implements SubjectRepository.onF
         subjectLiveData.setValue(subjectModels);
     }
 
-    public void addSubject(String name){
-        repository.addSubject(name);
+    public void addSubject(String name, String description){
+        repository.addSubject(name, description);
     }
 
     public void deleteSubject(String subjectId){

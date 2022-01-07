@@ -30,19 +30,46 @@
         android:id="@+id/signInFragment"
         android:name="com.example.mytests.views.SignInFragment"
         android:label="SignInFragment"
-        tools:layout="@layout/fragment_sign_up">
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <!--
         <action
             android:id="@+id/action_signInFragment_to_subjectFragment"
             app:destination="@id/subjectFragment" />
+            -->
+        <action
+            android:id="@+id/action_signInFragment_to_studentSubjectFragment"
+            app:destination="@id/studentSubjectFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_teacherSubjectFragment"
+            app:destination="@id/teacherSubjectFragment" />
         <!--
         <action
             android:id="@+id/action_signInFragment_to_listFragment"
             app:destination="@id/listFragment" />
             -->
     </fragment>
+    <fragment
+        android:id="@+id/studentSubjectFragment"
+        android:name="com.example.mytests.views.student.StudentSubjectFragment"
+        android:label="StudentSubjectFragment"
+        tools:layout="@layout/fragment_student_subject_list" >
+        <action
+            android:id="@+id/action_studentSubjectFragment_to_studentTestFragment"
+            app:destination="@id/studentTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherSubjectFragment"
+        android:name="com.example.mytests.views.teacher.TeacherSubjectFragment"
+        android:label="TeacherSubjectFragment"
+        tools:layout="@layout/fragment_teacher_subject_list">
+        <action
+            android:id="@+id/action_subjectFragment_to_subjectDetailFragment"
+            app:destination="@id/subjectDetailFragment" />
+    </fragment>
+    <!--
     <fragment
         android:id="@+id/subjectFragment"
         android:name="com.example.mytests.views.SubjectFragment"
@@ -52,9 +79,10 @@
             android:id="@+id/action_subjectFragment_to_subjectDetailFragment"
             app:destination="@id/subjectDetailFragment" />
     </fragment>
+    -->
     <fragment
         android:id="@+id/testFragment"
-        android:name="com.example.mytests.views.TestFragment"
+        android:name="com.example.mytests.views.teacher.TestFragment"
         android:label="fragment_test_list"
         tools:layout="@layout/fragment_test_list" >
         <argument
@@ -66,12 +94,12 @@
             app:argType="string"
             android:defaultValue="null" />
         <action
-            android:id="@+id/action_testFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            android:id="@+id/action_testFragment_to_addTestDialogFragment"
+            app:destination="@id/addTestDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.mytests.views.TestDetailFragment"
+        android:name="com.example.mytests.views.student.TestDetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_test_detail" >
         <argument
@@ -98,7 +126,7 @@
     </fragment>
     <fragment
         android:id="@+id/subjectDetailFragment"
-        android:name="com.example.mytests.views.SubjectDetailFragment"
+        android:name="com.example.mytests.views.teacher.SubjectDetailFragment"
         android:label="fragment_subject_detali"
         tools:layout="@layout/fragment_subject_detail" >
         <action
@@ -108,6 +136,69 @@
             android:name="position"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_subjectDetailFragment_to_memberFragment"
+            app:destination="@id/memberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentTestFragment"
+        android:name="com.example.mytests.views.student.StudentTestFragment"
+        android:label="fragment_student_test_list"
+        tools:layout="@layout/fragment_student_test_list" >
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="subjectId"
+            app:argType="string"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_studentTestFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberFragment"
+        android:name="com.example.mytests.views.teacher.MemberFragment"
+        android:label="fragment_member_list"
+        tools:layout="@layout/fragment_member_list" >
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="subjectId"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTestDialogFragment"
+        android:name="com.example.mytests.views.teacher.AddTestDialogFragment"
+        android:label="AddTestDialogFragment"
+        tools:layout="@layout/fragment_add_test_dialog">
+        <argument
+            android:name="subjectId"
+            app:argType="string"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_addTestDialogFragment_to_addQuestionFragment"
+            app:destination="@id/addQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addQuestionFragment"
+        android:name="com.example.mytests.views.teacher.AddQuestionFragment"
+        android:label="AddQuestionFragment"
+        tools:layout="@layout/fragment_add_question">
+        <argument
+            android:name="subjectId"
+            app:argType="string"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_addQuestionFragment_to_testFragment"
+            app:destination="@id/testFragment" />
+        <action
+            android:id="@+id/action_addQuestionFragment_to_addQuestionFragment"
+            app:destination="@id/addQuestionFragment" />
     </fragment>
 
 </navigation>

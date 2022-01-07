@@ -1,6 +1,7 @@
 package com.example.mytests.views;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,13 +67,13 @@ public class SignInFragment extends Fragment {
                             if (firebaseUser != null) {
                                 // tu spr czy uczen czy nauczyciel
                                 viewModel.setUserRole(firebaseUser.getUid());
-                                if(viewModel.getUserRole()=="Teachers") {
-
-                                }
-                                else {
-
-                                }
-                                navController.navigate(R.id.action_signInFragment_to_subjectFragment);
+                                Log.d("User ID: ", firebaseUser.getUid());
+                                String userRole = viewModel.getUserRole();
+                                Log.d("Role: ", userRole);
+                                if(userRole=="Teachers")
+                                    navController.navigate(R.id.action_signInFragment_to_teacherSubjectFragment);
+                                else
+                                    navController.navigate(R.id.action_signInFragment_to_studentSubjectFragment);
                             }
 
                         }
@@ -85,7 +86,7 @@ public class SignInFragment extends Fragment {
             }
         });
 
-        binding.btnSignInGoogle.setOnClickListener(new View.OnClickListener() {
+        /*binding.btnSignInGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -95,13 +96,13 @@ public class SignInFragment extends Fragment {
                     @Override
                     public void onChanged(FirebaseUser firebaseUser) {
                         if (firebaseUser!=null){
-                            navController.navigate(R.id.action_signInFragment_to_subjectFragment);
+                            //navController.navigate(R.id.action_signInFragment_to_subjectFragment);
                         }
                     }
                 });
 
             }
-        });
+        });*/
 
     }
 
@@ -111,7 +112,6 @@ public class SignInFragment extends Fragment {
 
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
                 .getInstance(getActivity().getApplication())).get(AuthViewModel.class);
-
-
     }
+
 }

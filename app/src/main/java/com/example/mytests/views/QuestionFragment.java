@@ -74,7 +74,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         binding.btnOptionC.setOnClickListener(this);
         binding.btnNextQuestion.setOnClickListener(this);
 
-        Log.e("TestId :", testId);
+        Log.e("TestIdQuestionFragment:", testId);
 
 
         binding.btnCloseQuize.setOnClickListener(new View.OnClickListener() {

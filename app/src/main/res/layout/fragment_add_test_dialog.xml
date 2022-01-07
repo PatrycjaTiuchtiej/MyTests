@@ -2,52 +2,39 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="350dp"
-    android:layout_margin="16dp"
-    android:padding="16dp"
-    android:background="@color/light_sky_light"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple"
+    tools:context=".views.teacher.AddTestDialogFragment">
 
     <EditText
-        android:id="@+id/addSubjectName"
+        android:id="@+id/addTestTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="192dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
-        android:hint="Subject Name"
+        android:hint="Test Title"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/light_sky_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/addSubjectDescript"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Description"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addSubjectName" />
-
     <Button
-        android:id="@+id/addSubjectButton"
+        android:id="@+id/addQuestionsButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:text="Add Subject"
+        android:layout_marginBottom="332dp"
+        android:text="Add Questions"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addSubjectDescript" />
+        app:layout_constraintTop_toBottomOf="@+id/addTestTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

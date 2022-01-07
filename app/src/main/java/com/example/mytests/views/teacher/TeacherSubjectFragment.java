@@ -1,4 +1,4 @@
-package com.example.mytests.views;
+package com.example.mytests.views.teacher;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -19,18 +19,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytests.SwipeHelper;
 import com.example.mytests.adapter.SubjectAdapter;
-import com.example.mytests.databinding.FragmentSubjectListBinding;
+import com.example.mytests.databinding.FragmentTeacherSubjectListBinding;
 import com.example.mytests.model.SubjectModel;
 import com.example.mytests.viewmodel.SubjectViewModel;
-import com.example.mytests.views.teacher.AddSubjectDialogFragment;
-import com.example.mytests.views.teacher.DeleteSubjectDialogFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-public class SubjectFragment extends Fragment implements SubjectAdapter.OnItemClickedListener {
+public class TeacherSubjectFragment extends Fragment implements SubjectAdapter.OnItemClickedListener {
 
-    private FragmentSubjectListBinding binding;
+    private FragmentTeacherSubjectListBinding binding;
     private NavController navController;
     private SubjectViewModel viewModel;
     private SubjectAdapter adapter;
@@ -41,7 +39,7 @@ public class SubjectFragment extends Fragment implements SubjectAdapter.OnItemCl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        binding = FragmentSubjectListBinding.inflate(inflater, container, false);
+        binding = FragmentTeacherSubjectListBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -83,7 +81,7 @@ public class SubjectFragment extends Fragment implements SubjectAdapter.OnItemCl
             @Override
             public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder, List<UnderlayButton> underlayButtons) {
                 underlayButtons.add(new SwipeHelper.UnderlayButton(
-                        "Delete",
+                        "DELETE",
                         0,
                         Color.parseColor("#1C1B1B"/*"#FF3C30"*/),
                         new SwipeHelper.UnderlayButtonClickListener() {
@@ -134,11 +132,11 @@ public class SubjectFragment extends Fragment implements SubjectAdapter.OnItemCl
     @Override
     public void onItemClick(int position) {
 
-        //SubjectFragmentDirections.ActionSubjectFragmentToSubjectDetailFragment action =
-        //        SubjectFragmentDirections.actionSubjectFragmentToSubjectDetailFragment();
+        TeacherSubjectFragmentDirections.ActionSubjectFragmentToSubjectDetailFragment action =
+                TeacherSubjectFragmentDirections.actionSubjectFragmentToSubjectDetailFragment();
         //action.setSubjectId("Subject0");
-        //action.setPosition(position);
-        //navController.navigate(action);
+        action.setPosition(position);
+        navController.navigate(action);
         //navController.navigate(R.id.action_subjectFragment_to_testFragment);
     }
 }

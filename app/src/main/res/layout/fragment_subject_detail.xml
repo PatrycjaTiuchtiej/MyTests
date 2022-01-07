@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple"
-    tools:context=".views.SubjectDetailFragment">
+    tools:context=".views.teacher.SubjectDetailFragment">
 
 
     <ImageView
@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!--
     <Button
         android:id="@+id/btnAddStudent"
         android:layout_width="0dp"
@@ -38,9 +38,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
+    -->
     <Button
-        android:id="@+id/btnStartQuiz"
+        android:id="@+id/btnViewTests"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -51,7 +51,7 @@
         android:text="View Tests"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateQuiz"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewStudents"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.035" />
 
     <Button
-        android:id="@+id/btnCreateQuiz"
+        android:id="@+id/btnViewStudents"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -67,10 +67,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/button_in_up_selector"
-        android:text="Create Test"
+        android:text="View Students"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddStudent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,10 +126,12 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="52dp"
             android:layout_marginEnd="32dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+            android:text="Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="fill"
+            android:textAlignment="gravity" />
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

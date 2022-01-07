@@ -1,4 +1,4 @@
-package com.example.mytests.views;
+package com.example.mytests.views.teacher;
 
 
 import android.app.Dialog;
@@ -36,9 +36,10 @@ public class AddSubjectDialogFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 String subjectName = binding.addSubjectName.getText().toString();
+                String subjectDescript = binding.addSubjectDescript.getText().toString();
                 if(!subjectName.isEmpty())
                 {
-                    viewModel.addSubject(subjectName);
+                    viewModel.addSubject(subjectName, subjectDescript);
                     Log.w("ADD_SUBJECT", subjectName);
                     Snackbar.make(view, "Subject added successfully", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();

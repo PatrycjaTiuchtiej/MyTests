@@ -1,7 +1,6 @@
 package com.example.mytests.repository;
 
 import android.app.Application;
-import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,26 +10,21 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.mytests.R;
 import com.example.mytests.model.UserModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Executor;
 
 public class AuthRepository {
 
@@ -43,7 +37,7 @@ public class AuthRepository {
     //private MutableLiveData<Boolean> isTeacher;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private String userRole;
+    private String userRole = "Teachers"; // bug
 
 
     public AuthRepository(Application application) {
@@ -51,7 +45,7 @@ public class AuthRepository {
         this.application = application;
         firebaseUserMutableLiveData = new MutableLiveData<>();
         firebaseAuth = FirebaseAuth.getInstance();
-        requestGoogleSignIn();
+        //requestGoogleSignIn();
 
     }
 
@@ -76,6 +70,7 @@ public class AuthRepository {
                     firebaseUserMutableLiveData.postValue(firebaseAuth.getCurrentUser());
                     Map<String, Object> userId = new HashMap<>();
                     userId.put("user_id", firebaseAuth.getCurrentUser().getUid());
+                    userId.put("email", email);
                     db.collection(role).document(firebaseAuth.getCurrentUser().getUid())
                             .set(userId)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -126,6 +121,7 @@ public class AuthRepository {
                 }
             }
         });
+        Log.d("Role: ", userRole);
     }
 
     public String getUserRole() {
@@ -144,7 +140,7 @@ public class AuthRepository {
 
     }
 
-    public void sigInGoogle() {
+    /*public void sigInGoogle() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         application.startActivity(signInIntent);
 
@@ -182,7 +178,7 @@ public class AuthRepository {
                         }
                     }
                 });
-    }
+    }*/
 
 
     public void signOut() {

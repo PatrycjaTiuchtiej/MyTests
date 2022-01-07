@@ -1,4 +1,4 @@
-package com.example.mytests.views;
+package com.example.mytests.views.student;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,15 +16,16 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.mytests.adapter.TestAdapter;
-import com.example.mytests.databinding.FragmentTestListBinding;
+import com.example.mytests.databinding.FragmentStudentTestListBinding;
 import com.example.mytests.model.TestModel;
 import com.example.mytests.viewmodel.TestViewModel;
+import com.example.mytests.views.teacher.TestFragmentArgs;
 
 import java.util.List;
 
-public class TestFragment extends Fragment implements TestAdapter.OnItemClickedListener {
+public class StudentTestFragment extends Fragment implements TestAdapter.OnItemClickedListener {
 
-    private FragmentTestListBinding binding;
+    private FragmentStudentTestListBinding binding;
     private NavController navController;
     private TestViewModel viewModel;
     private TestAdapter adapter;
@@ -36,7 +37,7 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        binding = FragmentTestListBinding.inflate(inflater, container, false);
+        binding = FragmentStudentTestListBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -52,10 +53,14 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
         //viewModel.setSubjectId(subjectId);
 
         binding.recyclerListTest.setHasFixedSize(true);
-        binding.recyclerListTest.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        binding.recyclerListTest.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
         adapter = new TestAdapter(this);
         binding.recyclerListTest.setAdapter(adapter);
+
+        // tu trzeba mieć obiekt subject - może go przekazać
+        //binding.txtSubjectDetailFragmentTitle.setText(subject.getName);
+        //binding.txtSubjectDetailFragmentDesc.setText(subject.getDescription());
 
         viewModel.getTestLiveData(subjectId).observe(getViewLifecycleOwner(), new Observer<List<TestModel>>() {
             @Override
@@ -79,8 +84,8 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
     @Override
     public void onItemClick(int position) {
 
-        TestFragmentDirections.ActionTestFragmentToDetailFragment action =
-                TestFragmentDirections.actionTestFragmentToDetailFragment();
+        StudentTestFragmentDirections.ActionStudentTestFragmentToDetailFragment action =
+                StudentTestFragmentDirections.actionStudentTestFragmentToDetailFragment();
 
         action.setPosition(position);
         navController.navigate(action);

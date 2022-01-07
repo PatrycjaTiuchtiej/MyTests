@@ -25,6 +25,8 @@ public class TestViewModel extends ViewModel implements TestRepository.onFiresto
         repository.setSubjectId(subjectId);
     }
 
+    public void addTest(String title) { repository.addTest(title); }
+
 
     public MutableLiveData<List<TestModel>> getTestLiveData(String subjectId ) {
         this.setSubjectId(subjectId);

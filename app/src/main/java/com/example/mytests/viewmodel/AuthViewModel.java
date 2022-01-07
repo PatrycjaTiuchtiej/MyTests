@@ -44,9 +44,9 @@ public class AuthViewModel extends AndroidViewModel {
 
     public String getUserRole() { return repository.getUserRole(); }
 
-    public void signInWithGoogle() {
+    /*public void signInWithGoogle() {
         repository.sigInGoogle();
-    }
+    }*/
 
     public void signOut() {
         repository.signOut();

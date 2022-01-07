@@ -7,5 +7,6 @@
     </item>
     <item
         android:drawable="@drawable/button_in_up"
-        ></item>
+        >
+    </item>
 </selector>

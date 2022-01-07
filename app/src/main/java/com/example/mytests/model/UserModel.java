@@ -5,26 +5,28 @@ import com.google.firebase.firestore.DocumentId;
 public class UserModel {
 
     @DocumentId
-    private String userId;
+    private String user_id;
     private String role;
     private String email;
+    private String username;
 
 
-    public UserModel(String userId, String role, String email) {
-        this.userId = userId;
+    public UserModel(String userId, String role, String email, String username) {
+        this.user_id = userId;
         this.role = role;
         this.email = email;
+        this.username = username;
     }
 
     public UserModel() {
     }
 
     public String getUserId() {
-        return userId;
+        return user_id;
     }
 
     public void setUserId(String userId) {
-        this.userId = userId;
+        this.user_id = userId;
     }
 
     public String getRole() {
@@ -41,5 +43,13 @@ public class UserModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

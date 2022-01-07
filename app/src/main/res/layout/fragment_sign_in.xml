@@ -10,6 +10,8 @@
     <!-- TODO: Update blank fragment layout -->
 
 
+    <!-- android:src="@drawable/studying" -->
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="260dp"
@@ -19,14 +21,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
-        <!-- android:src="@drawable/studying" -->
 
     <EditText
         android:id="@+id/editPasswordSignIn"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/edit_pg"
         android:ems="10"
@@ -45,11 +46,10 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/edit_pg"
         android:ems="10"
-        android:hint="Enter Your Name"
+        android:hint="Enter Your Email"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="@color/white"
@@ -64,22 +64,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="24dp"
         android:text="Not registered Yet? Sign Up"
-        android:textColor="@color/black"
+        android:textColor="@color/light_sky_light"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle" />
+        app:layout_constraintStart_toStartOf="parent"/>
+        <!--app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle"-->
 
     <Button
         android:id="@+id/buttonSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_in_up_selector"
         android:text="Sign In"
@@ -97,18 +97,20 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        android:text="Welcome to MyTest"
-        android:textColor="@color/white"
+        android:text="Welcome to MyTests"
+        android:textColor="@color/input_register_bg"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-
+<!--
     <Button
         android:id="@+id/btnSignInGoogle"
         android:layout_width="match_parent"
@@ -128,4 +130,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSignIn" />
+    -->
 </androidx.constraintlayout.widget.ConstraintLayout>

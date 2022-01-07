@@ -1,4 +1,4 @@
-package com.example.mytests.views;
+package com.example.mytests.views.teacher;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -52,6 +52,7 @@ public class SubjectDetailFragment extends Fragment {
             public void onChanged(List<SubjectModel> subjectModels) {
                 SubjectModel subject = subjectModels.get(position);
                 binding.txtSubjectDetailFragmentTitle.setText(subject.getName());
+                binding.txtSubjectDetailFragmentDesc.setText(subject.getDescription());
                 //Glide.with(view)
                 //        .load(subject.getImage())
                 //        .into(binding.imageDetailFragment);
@@ -72,7 +73,7 @@ public class SubjectDetailFragment extends Fragment {
             }
         });
 
-        binding.btnStartQuiz.setOnClickListener(new View.OnClickListener() {
+        binding.btnViewTests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SubjectDetailFragmentDirections.ActionSubjectDetailFragmentToTestFragment action =
@@ -86,6 +87,19 @@ public class SubjectDetailFragment extends Fragment {
         });
 
 
+        binding.btnViewStudents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SubjectDetailFragmentDirections.ActionSubjectDetailFragmentToMemberFragment action =
+                        SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMemberFragment();
+                action.setSubjectId(subjectId);
+                Log.e("subjectId ", subjectId);
+                //action.setTotalQueCount(totalQusCount);
+                action.setPosition(position);
+                navController.navigate(action);
+            }
+        });
+
     }
 
     @Override
@@ -94,6 +108,5 @@ public class SubjectDetailFragment extends Fragment {
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
                 .getInstance(getActivity().getApplication())).get(SubjectViewModel.class);
     }
-
 
 }

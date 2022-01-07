@@ -1,4 +1,4 @@
-package com.example.mytests.views;
+package com.example.mytests.views.teacher;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -12,36 +12,43 @@ import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 
-import com.example.mytests.databinding.FragmentDeleteSubjectDialogBinding;
-import com.example.mytests.viewmodel.SubjectViewModel;
+import com.example.mytests.databinding.FragmentDeleteMemberDialogBinding;
+import com.example.mytests.viewmodel.MemberViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
-public class DeleteSubjectDialogFragment extends DialogFragment {
+public class DeleteMemberDialogFragment extends DialogFragment {
 
     private NavController navController;
-    FragmentDeleteSubjectDialogBinding binding;
-    private SubjectViewModel viewModel;
+    FragmentDeleteMemberDialogBinding binding;
+    private MemberViewModel viewModel;
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
 
-        binding = FragmentDeleteSubjectDialogBinding.inflate(LayoutInflater.from(getContext()));
+        binding = FragmentDeleteMemberDialogBinding.inflate(LayoutInflater.from(getContext()));
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(binding.getRoot());
 
         //binding.dialogTextView.setText("I am Dialog's TextView");
 
-        binding.deleteSubjectButton.setOnClickListener(new View.OnClickListener() {
+        binding.deleteMemberButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // mock subject id
                 String subjectId = "matma";
                 //delete action
-                viewModel.deleteSubject(subjectId);
-                Log.w("DELETE_SUBJECT", subjectId);
-                Snackbar.make(view, "Subject deleted", Snackbar.LENGTH_LONG)
+                //viewModel.deleteMember(subjectId);
+                Log.w("DELETE_STUDENT", subjectId);
+                Snackbar.make(view, "Student deleted", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
+            }
+        });
+
+        binding.cancelDeleteMemberButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
             }
         });
 
@@ -52,7 +59,7 @@ public class DeleteSubjectDialogFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
-                .getInstance(getActivity().getApplication())).get(SubjectViewModel.class);
+                .getInstance(getActivity().getApplication())).get(MemberViewModel.class);
     }
 
 }

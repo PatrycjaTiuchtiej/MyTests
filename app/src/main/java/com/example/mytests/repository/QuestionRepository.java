@@ -1,23 +1,30 @@
 package com.example.mytests.repository;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.mytests.model.QuestionModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class QuestionRepository {
 
 
     private FirebaseFirestore db;
     private String testId;
+    private String subjectId;
     private HashMap<String, Long> resultHashMap = new HashMap<>();
     private OnQuestionLoad onQuestionLoad;
     private OnResultAdded onResultAdded;
@@ -28,10 +35,8 @@ public class QuestionRepository {
 
         db = FirebaseFirestore.getInstance();
         this.onQuestionLoad = onQuestionLoad;
-        //this.onResultAdded = onResultAdded;
-        //this.onResultLoad = onResultLoad;
-
-
+        this.onResultAdded = onResultAdded;
+        this.onResultLoad = onResultLoad;
     }
 
     public void addResults(HashMap<String, Object> resultMap) {
@@ -74,9 +79,13 @@ public class QuestionRepository {
         this.testId = testId;
     }
 
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
+    }
+
     public void getQuestions() {
 
-        db.collection("Subjects").document("Subject0")
+        db.collection("Subjects").document("subject")
                 .collection("Tests").document(testId)
                 .collection("Questions").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -89,10 +98,36 @@ public class QuestionRepository {
                     onQuestionLoad.onError(task.getException());
                 }
 
-
             }
         });
 
+    }
+
+    public void addQuestion(String questionText, String optA, String optB, String optC, String optD, String correctOpt){
+        DocumentReference testRef = db.collection("Subjects").document(subjectId)
+                .collection("Tests").document(testId);
+        Map<String, Object> question = new HashMap<>();
+        question.put("text", questionText);
+        question.put("optionA", optA);
+        question.put("optionB", optB);
+        question.put("optionC", optC);
+        question.put("optionD", optD);
+        question.put("correctOption", correctOpt);
+
+        testRef.collection("Questions").document()
+                .set(question)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("ADD_QUESTION", "Document Question successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("ADD_QUESTION", "Error writing Question document", e);
+                    }
+                });
     }
 
     public interface OnResultLoad {

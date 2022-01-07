@@ -44,9 +44,16 @@ public class QuestionViewModel extends ViewModel implements QuestionRepository.O
         repository.setTestId(testId);
     }
 
+    public void setSubjectId(String subjectId){
+        repository.setSubjectId(subjectId);
+    }
+
     public void getQuestion(){
         repository.getQuestions();
     }
+
+    public void addQuestion(String questionText, String optA, String optB, String optC, String optD, String correctOpt)
+    { repository.addQuestion(questionText, optA, optB, optC, optD, correctOpt); }
 
     @Override
     public void onLoad(List<QuestionModel> questionModels) {

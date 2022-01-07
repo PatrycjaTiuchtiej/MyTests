@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.navigation.Navigation;
 import com.example.mytests.R;
 import com.example.mytests.databinding.FragmentSignUpBinding;
 import com.example.mytests.viewmodel.AuthViewModel;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseUser;
 
 
@@ -25,9 +27,9 @@ public class  SignUpFragment extends Fragment {
     private AuthViewModel viewModel;
     private NavController navController;
     FragmentSignUpBinding binding;
-
-    Boolean isStudent;
-    Boolean isTeacher;
+    String role = "Students";
+    //Boolean isStudent;
+    //Boolean isTeacher;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,7 +56,7 @@ public class  SignUpFragment extends Fragment {
         });
 
 
-        binding.student.setOnClickListener(new View.OnClickListener() {
+        /*binding.student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { isStudent = true; }
         });
@@ -62,6 +64,25 @@ public class  SignUpFragment extends Fragment {
         binding.teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { isTeacher = true; }
+        });*/
+
+        binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                switch(checkedId)
+                {
+                    case R.id.student:
+                        role = "Students";
+                        Snackbar.make(view, role, Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        break;
+                    case R.id.teacher:
+                        role = "Teachers";
+                        Snackbar.make(view, role, Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        break;
+                }
+            }
         });
 
 
@@ -74,7 +95,7 @@ public class  SignUpFragment extends Fragment {
 
                 if (!email.isEmpty() && !pass.isEmpty()){
 
-                    String role = isTeacher ? "Teachers" : "Students";
+                    //String role = isTeacher ? "Teachers" : "Students";
                     viewModel.signUp(email, pass, role);
                     Toast.makeText(getContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
                     viewModel.getFirebaseUserMutableLiveData().observe(getViewLifecycleOwner(), new Observer<FirebaseUser>() {

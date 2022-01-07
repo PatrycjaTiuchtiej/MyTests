@@ -8,16 +8,18 @@ public class SubjectModel {
     @DocumentId
     private String subjectId;
 
-    private String name, teacherId;
+    private String name, description, teacherId;
     private ArrayList<String> students;
     private ArrayList<TestModel> tests;
 
     public SubjectModel() {
     }
 
-    public SubjectModel(String subjectId, String name, String ownerId, ArrayList<String> students, ArrayList<TestModel> tests) {
+    public SubjectModel(String subjectId, String name, String description, String ownerId,
+                        ArrayList<String> students, ArrayList<TestModel> tests) {
         this.subjectId = subjectId;
         this.name = name;
+        this.description = description;
         this.teacherId = ownerId;
         this.students = students;
         this.tests = tests;
@@ -39,11 +41,11 @@ public class SubjectModel {
         this.name = name;
     }
 
-    public String getOwnerId() {
+    public String getTeacherId() {
         return teacherId;
     }
 
-    public void setOwnerId(String ownerId) {
+    public void setTeacherId(String ownerId) {
         this.teacherId = ownerId;
     }
 
@@ -61,5 +63,13 @@ public class SubjectModel {
 
     public void setStudents(ArrayList<String> students) {
         this.students = students;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

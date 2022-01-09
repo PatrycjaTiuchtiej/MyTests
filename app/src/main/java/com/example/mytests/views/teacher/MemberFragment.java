@@ -125,11 +125,9 @@ public class MemberFragment extends Fragment implements MemberAdapter.OnItemClic
     @Override
     public void onItemClick(int position) {
 
-        //TeacherMemberFragmentDirections.ActionMemberFragmentToMemberDetailFragment action =
-        //        TeacherMemberFragmentDirections.actionMemberFragmentToMemberDetailFragment();
-        //action.setMemberId("Member0");
-        //action.setPosition(position);
-        //navController.navigate(action);
-        //navController.navigate(R.id.action_memberFragment_to_testFragment);
+        MemberFragmentDirections.ActionMemberFragmentToResultStudentFragment action =
+                MemberFragmentDirections.actionMemberFragmentToResultStudentFragment();
+        action.setPosition(position);
+        navController.navigate(action);
     }
 }

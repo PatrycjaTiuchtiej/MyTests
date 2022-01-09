@@ -30,7 +30,7 @@ public class TestDetailFragment extends Fragment {
     private TestViewModel viewModel;
     private String subjectId;
     private String testId;
-    private long totalQusCount;
+    private long totalQueCount;
 
 
     @Nullable
@@ -59,7 +59,7 @@ public class TestDetailFragment extends Fragment {
                 //        .load(test.getImage())
                 //        .into(binding.imageDetailFragment);
                 //binding.txtDetailFragmentDifficulty.setText(quiz.getDifficulty());
-                //binding.txtDetailsFragmentQuestions.setText(String.valueOf(quiz.getQuestions()));
+                //binding.txtNumOfQuestions.setText(String.valueOf(test.getQuestions()));
 
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -69,7 +69,7 @@ public class TestDetailFragment extends Fragment {
                     }
                 }, 2000);
 
-                //totalQusCount = test.getQuestions();
+                totalQueCount = 1;//test.getQuestions();
                 testId = test.getTestId();
                 Log.e("testId ", testId);
             }
@@ -81,7 +81,7 @@ public class TestDetailFragment extends Fragment {
                 TestDetailFragmentDirections.ActionDetailFragmentToQuestionFragment action =
                         TestDetailFragmentDirections.actionDetailFragmentToQuestionFragment();
                 action.setTestId(testId);
-                action.setTotalQueCount(totalQusCount);
+                action.setTotalQueCount(totalQueCount);
                 navController.navigate(action);
             }
         });

@@ -101,8 +101,6 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
                             }
                         }
                 ));
-
-
             }
         };
     }
@@ -118,10 +116,10 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
     @Override
     public void onItemClick(int position) {
 
-        //TestFragmentDirections.ActionTestFragmentToDetailFragment action =
-        //        TestFragmentDirections.actionTestFragmentToDetailFragment();
+        TestFragmentDirections.ActionTestFragmentToResultTestFragment action =
+                TestFragmentDirections.actionTestFragmentToResultTestFragment();
 
-        //action.setPosition(position);
-        //navController.navigate(action);
+        action.setPosition(position);
+        navController.navigate(action);
     }
 }

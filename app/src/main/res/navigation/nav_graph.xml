@@ -96,6 +96,9 @@
         <action
             android:id="@+id/action_testFragment_to_addTestDialogFragment"
             app:destination="@id/addTestDialogFragment" />
+        <action
+            android:id="@+id/action_testFragment_to_resultTestFragment"
+            app:destination="@id/resultTestFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -109,6 +112,10 @@
         <action
             android:id="@+id/action_detailFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <argument
+            android:name="subjectId"
+            app:argType="string"
+            android:defaultValue="null" />
     </fragment>
     <fragment
         android:id="@+id/questionFragment"
@@ -123,6 +130,9 @@
             android:name="testId"
             app:argType="string"
             android:defaultValue="null" />
+        <action
+            android:id="@+id/action_questionFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
     <fragment
         android:id="@+id/subjectDetailFragment"
@@ -170,6 +180,9 @@
             android:name="subjectId"
             app:argType="string"
             android:defaultValue="null" />
+        <action
+            android:id="@+id/action_memberFragment_to_resultStudentFragment"
+            app:destination="@id/resultStudentFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTestDialogFragment"
@@ -199,6 +212,51 @@
         <action
             android:id="@+id/action_addQuestionFragment_to_addQuestionFragment"
             app:destination="@id/addQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.mytests.views.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_resultFragment_to_studentSubjectFragment"
+            app:destination="@id/studentSubjectFragment" />
+        <argument
+            android:name="testId"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="SubjectId"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultTestFragment"
+        android:name="com.example.mytests.views.teacher.ResultTestFragment"
+        android:label="fragment_result_test_list"
+        tools:layout="@layout/fragment_result_test_list" >
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="subjectId"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultStudentFragment"
+        android:name="com.example.mytests.views.teacher.ResultStudentFragment"
+        android:label="fragment_result_student_list"
+        tools:layout="@layout/fragment_result_student_list" >
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="subjectId"
+            app:argType="string"
+            android:defaultValue="null" />
     </fragment>
 
 </navigation>

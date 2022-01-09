@@ -65,7 +65,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
             super(binding.getRoot());
             this.binding = binding;
             // ????????????
-            //binding.constrainLayout.setOnClickListener(this);
+            binding.constrainLayout.setOnClickListener(this);
         }
 
         @Override

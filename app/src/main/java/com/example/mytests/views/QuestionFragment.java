@@ -72,6 +72,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         binding.btnOptionA.setOnClickListener(this);
         binding.btnOptionB.setOnClickListener(this);
         binding.btnOptionC.setOnClickListener(this);
+        binding.btnOptionD.setOnClickListener(this);
         binding.btnNextQuestion.setOnClickListener(this);
 
         Log.e("TestIdQuestionFragment:", testId);
@@ -80,7 +81,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         binding.btnCloseQuize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //navController.navigate(R.id.action_quizFragment_to_listFragment);
+                navController.navigate(R.id.action_questionFragment_to_resultFragment);
             }
         });
 
@@ -120,15 +121,14 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                 binding.btnOptionB.setText(questionModels.get(i - 1).getOptionB());
                 binding.btnOptionC.setText(questionModels.get(i - 1).getOptionC());
                 binding.btnOptionD.setText(questionModels.get(i - 1).getOptionD());
-                //binding.txtAnsFeedbackTv.setText(questionModels.get(i - 1).getAnswer());
-                //timer = questionModels.get(i - 1).getTimer();
-                //answer = questionModels.get(i - 1).getAnswer();
+                binding.txtAnsFeedbackTv.setText(questionModels.get(i - 1).getCorrectOption());
+                timer = 30;//questionModels.get(i - 1).getTimer();
+                answer = questionModels.get(i - 1).getCorrectOption();
 
                 binding.txtQuestionNumberTv.setText(String.valueOf(currentQueNo));
                 startTimer();
             }
         });
-
 
         canAnswer = true;
     }
@@ -200,7 +200,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                     loadQuestion(currentQueNo);
                     resetOptions();
                 }
-
                 break;
         }
 
@@ -214,6 +213,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         binding.btnOptionA.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.edit_pg));
         binding.btnOptionB.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.edit_pg));
         binding.btnOptionC.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.edit_pg));
+        binding.btnOptionD.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.edit_pg));
     }
 
     private void submitResults() {
@@ -225,10 +225,10 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
         viewModel.addResults(resultMap);
 
-        /*QuizFragmentDirections.ActionQuizFragmentToResultFragment action =
-                QuizFragmentDirections.actionQuizFragmentToResultFragment();
-        action.setQuizId(quizId);
-        navController.navigate(action);*/
+        QuestionFragmentDirections.ActionQuestionFragmentToResultFragment action =
+                QuestionFragmentDirections.actionQuestionFragmentToResultFragment();
+        action.setTestId(testId);
+        navController.navigate(action);
 
     }
 

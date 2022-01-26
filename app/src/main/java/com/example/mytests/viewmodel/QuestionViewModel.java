@@ -21,7 +21,7 @@ public class QuestionViewModel extends ViewModel implements QuestionRepository.O
     public QuestionViewModel() {
         questionMutableLiveData = new MutableLiveData<>();
         resultMutableLiveData=new MutableLiveData<>();
-        repository=new QuestionRepository(this);
+        repository=new QuestionRepository(this, this, this);
     }
 
     public MutableLiveData<HashMap<String, Long>> getResultMutableLiveData() {

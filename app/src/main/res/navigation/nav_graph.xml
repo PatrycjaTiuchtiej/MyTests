@@ -119,7 +119,7 @@
     </fragment>
     <fragment
         android:id="@+id/questionFragment"
-        android:name="com.example.mytests.views.QuestionFragment"
+        android:name="com.example.mytests.views.student.QuestionFragment"
         android:label="fragment_question"
         tools:layout="@layout/fragment_question" >
         <argument
@@ -215,7 +215,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.mytests.views.ResultFragment"
+        android:name="com.example.mytests.views.student.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
         <action

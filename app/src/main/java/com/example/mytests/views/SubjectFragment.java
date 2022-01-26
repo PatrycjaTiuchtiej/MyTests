@@ -23,7 +23,6 @@ import com.example.mytests.databinding.FragmentSubjectListBinding;
 import com.example.mytests.model.SubjectModel;
 import com.example.mytests.viewmodel.SubjectViewModel;
 import com.example.mytests.views.teacher.AddSubjectDialogFragment;
-import com.example.mytests.views.teacher.DeleteSubjectDialogFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -90,7 +89,7 @@ public class SubjectFragment extends Fragment implements SubjectAdapter.OnItemCl
                             @Override
                             public void onClick(int pos) {
                                 // TODO: onDelete
-                                new DeleteSubjectDialogFragment().show(getChildFragmentManager(),"TAG");
+                                //new DeleteSubjectDialogFragment().show(getChildFragmentManager(),"TAG");
                             }
                         }
                 ));

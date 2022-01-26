@@ -63,7 +63,6 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
         public SubjectViewHolder(FragmentSubjectBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            // ????????????
             binding.constrainLayout.setOnClickListener(this);
         }
 
@@ -76,6 +75,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 
     public interface OnItemClickedListener{
         void onItemClick(int position);
+        //void onItemSwipe(int position);
     }
 }
 

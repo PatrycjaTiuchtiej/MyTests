@@ -69,7 +69,7 @@ public class TestDetailFragment extends Fragment {
                     }
                 }, 2000);
 
-                totalQueCount = 1;//test.getQuestions();
+                totalQueCount = 2;//test.getQuestions();
                 testId = test.getTestId();
                 Log.e("testId ", testId);
             }

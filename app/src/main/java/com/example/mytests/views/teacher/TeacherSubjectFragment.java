@@ -88,7 +88,10 @@ public class TeacherSubjectFragment extends Fragment implements SubjectAdapter.O
                             @Override
                             public void onClick(int pos) {
                                 // TODO: onDelete
-                                new DeleteSubjectDialogFragment().show(getChildFragmentManager(),"TAG");
+                                // nie wiem skąd wziąć subjectId
+
+                                String subjectId = "chemia";
+                                new DeleteSubjectDialogFragment(subjectId).show(getChildFragmentManager(),"TAG");
                             }
                         }
                 ));

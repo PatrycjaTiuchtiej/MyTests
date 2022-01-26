@@ -21,6 +21,9 @@ public class DeleteSubjectDialogFragment extends DialogFragment {
     private NavController navController;
     FragmentDeleteSubjectDialogBinding binding;
     private SubjectViewModel viewModel;
+    private String subjectId;
+
+    public DeleteSubjectDialogFragment(String subjectId) { this.subjectId = subjectId; }
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -34,14 +37,11 @@ public class DeleteSubjectDialogFragment extends DialogFragment {
         binding.deleteSubjectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // mock subject id
-                String subjectId = "matma";
-                //delete action
                 viewModel.deleteSubject(subjectId);
                 Log.w("DELETE_SUBJECT", subjectId);
                 Snackbar.make(view, "Subject deleted", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-
+                dismiss();
             }
         });
 

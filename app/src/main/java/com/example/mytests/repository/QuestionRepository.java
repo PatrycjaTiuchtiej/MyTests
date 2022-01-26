@@ -21,7 +21,6 @@ import java.util.Map;
 
 public class QuestionRepository {
 
-
     private FirebaseFirestore db;
     private String testId;
     private String subjectId;
@@ -31,7 +30,7 @@ public class QuestionRepository {
     private String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private OnResultLoad onResultLoad;
 
-    public QuestionRepository(OnQuestionLoad onQuestionLoad/*, OnResultAdded onResultAdded,OnResultLoad onResultLoad*/) {
+    public QuestionRepository(OnQuestionLoad onQuestionLoad, OnResultAdded onResultAdded,OnResultLoad onResultLoad) {
 
         db = FirebaseFirestore.getInstance();
         this.onQuestionLoad = onQuestionLoad;
@@ -40,8 +39,10 @@ public class QuestionRepository {
     }
 
     public void addResults(HashMap<String, Object> resultMap) {
-        db.collection("Quiz").document(testId)
-                .collection("results").document(currentUserId)
+        //db.collection("Quiz").document(testId)
+        db.collection("Subjects").document("subject")
+                .collection("Tests").document(testId)
+                .collection("Results").document(currentUserId)
                 .set(resultMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -55,12 +56,16 @@ public class QuestionRepository {
     }
 
     public void getResults() {
-        db.collection("Quiz").document(testId)
-                .collection("results").document(currentUserId)
+        //db.collection("Quiz").document(testId)
+        db.collection("Subjects").document("subject")
+                .collection("Tests").document(testId)
+                .collection("Results").document(currentUserId)
                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
+
+                    Log.d("Get results repo", "Success!");
                     resultHashMap.put("correct", task.getResult().getLong("correct"));
                     resultHashMap.put("wrong", task.getResult().getLong("wrong"));
                     resultHashMap.put("notAnswered", task.getResult().getLong("notAnswered"));
@@ -137,12 +142,10 @@ public class QuestionRepository {
 
     public interface OnQuestionLoad {
         void onLoad(List<QuestionModel> questionModels);
-
         void onError(Exception e);
     }
 
     public interface OnResultAdded {
-
         boolean onSubmit();
         void onError(Exception e);
     }

@@ -37,7 +37,7 @@ public class AuthRepository {
     //private MutableLiveData<Boolean> isTeacher;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private String userRole = "Teachers"; // bug
+    private String userRole;// = "Teachers"; // bug
 
 
     public AuthRepository(Application application) {
@@ -46,7 +46,6 @@ public class AuthRepository {
         firebaseUserMutableLiveData = new MutableLiveData<>();
         firebaseAuth = FirebaseAuth.getInstance();
         //requestGoogleSignIn();
-
     }
 
 
@@ -99,6 +98,7 @@ public class AuthRepository {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     firebaseUserMutableLiveData.postValue(firebaseAuth.getCurrentUser());
+                    setUserRole(firebaseAuth.getCurrentUser().getUid());
                 } else {
                     Toast.makeText(application, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -121,7 +121,7 @@ public class AuthRepository {
                 }
             }
         });
-        Log.d("Role: ", userRole);
+        //Log.d("Role: ", userRole);
     }
 
     public String getUserRole() {

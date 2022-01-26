@@ -66,10 +66,10 @@ public class SignInFragment extends Fragment {
 
                             if (firebaseUser != null) {
                                 // tu spr czy uczen czy nauczyciel
-                                viewModel.setUserRole(firebaseUser.getUid());
+                                //viewModel.setUserRole(firebaseUser.getUid());
                                 Log.d("User ID: ", firebaseUser.getUid());
                                 String userRole = viewModel.getUserRole();
-                                Log.d("Role: ", userRole);
+                                //Log.d("Role: ", userRole);
                                 if(userRole=="Teachers")
                                     navController.navigate(R.id.action_signInFragment_to_teacherSubjectFragment);
                                 else

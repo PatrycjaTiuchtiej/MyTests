@@ -1,4 +1,4 @@
-package com.example.mytests.views;
+package com.example.mytests.views.student;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -136,7 +136,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     //progressbar ın zamanlayıcısını ayarlıyouruz
     private void startTimer() {
 
-
         binding.txtCountTimeQuiz.setText(String.valueOf(timer));
         binding.progressBarQuizCount.setVisibility(View.VISIBLE);
         countDownTimer = new CountDownTimer(timer * 1000, 1000) {
@@ -148,14 +147,13 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                 Long persent = l / (timer * 10);  //progressbar ilerlemesinin yüzdesel ifadesi
                 binding.progressBarQuizCount.setProgress(persent.intValue());
 
-
             }
 
             @Override
             public void onFinish() {
 
                 canAnswer = false;
-                binding.txtAnsFeedbackTv.setText("Times Up!!No answer selected");
+                binding.txtAnsFeedbackTv.setText("Times Up! No answer selected");
                 notAnswer++;
                 showNextBtn();
 
@@ -194,7 +192,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_nextQuestion:
                 if (currentQueNo == totalQuestion) {
-                    //submitResults();
+                    submitResults();
                 } else {
                     currentQueNo++;
                     loadQuestion(currentQueNo);

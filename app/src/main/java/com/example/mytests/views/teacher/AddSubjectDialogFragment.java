@@ -43,6 +43,7 @@ public class AddSubjectDialogFragment extends DialogFragment {
                     Log.w("ADD_SUBJECT", subjectName);
                     Snackbar.make(view, "Subject added successfully", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                    dismiss();
                 }
             }
         });

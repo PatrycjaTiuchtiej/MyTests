@@ -22,7 +22,6 @@ import com.example.mytests.adapter.TestAdapter;
 import com.example.mytests.databinding.FragmentTestListBinding;
 import com.example.mytests.model.TestModel;
 import com.example.mytests.viewmodel.TestViewModel;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -58,8 +57,8 @@ public class TestFragment extends Fragment implements TestAdapter.OnItemClickedL
         binding.addTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
                 //viewModel.setSubjectId(subjectId);
                 //new AddTestDialogFragment(subjectId).show(getChildFragmentManager(),"ADD_TEST");
                 TestFragmentDirections.ActionTestFragmentToAddTestDialogFragment action =

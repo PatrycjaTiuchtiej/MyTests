@@ -41,7 +41,7 @@ public class DeleteMemberDialogFragment extends DialogFragment {
                 Log.w("DELETE_STUDENT", subjectId);
                 Snackbar.make(view, "Student deleted", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-
+                dismiss();
             }
         });
 

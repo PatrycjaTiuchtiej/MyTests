@@ -37,7 +37,7 @@ public class AuthRepository {
     //private MutableLiveData<Boolean> isTeacher;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private String userRole;// = "Teachers"; // bug
+    private String userRole = "Students"; // bug
 
 
     public AuthRepository(Application application) {

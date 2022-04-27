@@ -49,6 +49,7 @@ public class AddMemberDialogFragment extends DialogFragment {
                     Log.w("ADD_MEMBER", memberEmail);
                     Snackbar.make(view, "Member added successfully", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                    dismiss();
                 }
             }
         });

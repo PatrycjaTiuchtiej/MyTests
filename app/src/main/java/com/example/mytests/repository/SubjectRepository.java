@@ -28,7 +28,7 @@ public class SubjectRepository {
     //private Query subjects = db.collection("Subjects").whereEqualTo("teacher_id", currentUserId);
     //private Query subjects = db.collection("Subjects").whereArrayContains("students", currentUserId);
     private Query subjects;
-    private String roleCollection = "Students";
+    private String roleCollection = "Students";//"Students";
 
 
     public SubjectRepository(onFirestoreTaskComplate onFirestoreTaskComplate) {

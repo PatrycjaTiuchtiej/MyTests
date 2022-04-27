@@ -42,7 +42,7 @@ public class ResultTestAdapter extends RecyclerView.Adapter<ResultTestAdapter.Re
         ResultModel model = resultModels.get(position);
         holder.binding.resultStudentList.setText(model.getStudentEmail());
         //Log.d("Score", String.valueOf(model.getScore()));
-        holder.binding.resultScoreList.setText(String.valueOf(model.getScore())+"/10");
+        holder.binding.resultScoreList.setText(String.valueOf(model.getScore())+"/3");
         //Glide.with(holder.itemView)
         //        .load(model.getImage())
         //        .into(holder.binding.quizImageList);

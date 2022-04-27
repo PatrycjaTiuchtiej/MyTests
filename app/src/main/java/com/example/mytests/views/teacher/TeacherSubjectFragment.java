@@ -22,7 +22,6 @@ import com.example.mytests.adapter.SubjectAdapter;
 import com.example.mytests.databinding.FragmentTeacherSubjectListBinding;
 import com.example.mytests.model.SubjectModel;
 import com.example.mytests.viewmodel.SubjectViewModel;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -53,8 +52,8 @@ public class TeacherSubjectFragment extends Fragment implements SubjectAdapter.O
         binding.addSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
                 new AddSubjectDialogFragment().show(getChildFragmentManager(),"ADD_SUBJECT");
             }
         });
@@ -90,7 +89,7 @@ public class TeacherSubjectFragment extends Fragment implements SubjectAdapter.O
                                 // TODO: onDelete
                                 // nie wiem skąd wziąć subjectId
 
-                                String subjectId = "chemia";
+                                String subjectId = "biologia";
                                 new DeleteSubjectDialogFragment(subjectId).show(getChildFragmentManager(),"TAG");
                             }
                         }

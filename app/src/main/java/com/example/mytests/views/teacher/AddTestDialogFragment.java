@@ -16,7 +16,6 @@ import androidx.navigation.Navigation;
 
 import com.example.mytests.databinding.FragmentAddTestDialogBinding;
 import com.example.mytests.viewmodel.TestViewModel;
-import com.google.android.material.snackbar.Snackbar;
 
 public class AddTestDialogFragment extends Fragment {
 
@@ -57,8 +56,8 @@ public class AddTestDialogFragment extends Fragment {
                     viewModel.setSubjectId(subjectId);
                     //viewModel.addTest(testTitle);
                     Log.w("ADD_TEST", testTitle);
-                    Snackbar.make(view, "Test title added successfully", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    //Snackbar.make(view, "Test title added successfully", Snackbar.LENGTH_LONG)
+                    //        .setAction("Action", null).show();
 
                     AddTestDialogFragmentDirections.ActionAddTestDialogFragmentToAddQuestionFragment action =
                             AddTestDialogFragmentDirections.actionAddTestDialogFragmentToAddQuestionFragment();

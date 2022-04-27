@@ -23,7 +23,6 @@ import com.example.mytests.adapter.MemberAdapter;
 import com.example.mytests.databinding.FragmentMemberListBinding;
 import com.example.mytests.model.UserModel;
 import com.example.mytests.viewmodel.MemberViewModel;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +58,8 @@ public class MemberFragment extends Fragment implements MemberAdapter.OnItemClic
         binding.addMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
                 //viewModel.setSubjectId(subjectId);
                 new AddMemberDialogFragment(subjectId).show(getChildFragmentManager(),"ADD_MEMBER");
             }
@@ -75,7 +74,7 @@ public class MemberFragment extends Fragment implements MemberAdapter.OnItemClic
 
         List <String> members = new ArrayList<String>();
         members.add("pdKnT3JHKTRgE8l6eijpUUUra9J2");
-        members.add("ygm9e6hI4wXfcpnR4fEia3Gzjqx2");
+        //members.add("ygm9e6hI4wXfcpnR4fEia3Gzjqx2");
         members.add("pareGvqb25Xt2Iaza8YzXq3Vup73");
         members.add("eD6bh2oa8bdwW48M0aprkbN1Icm2");
         members.add("YUeWz9u13BZrxphznhtNuzdDEK53");

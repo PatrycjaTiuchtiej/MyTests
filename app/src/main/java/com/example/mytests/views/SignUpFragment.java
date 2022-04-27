@@ -18,7 +18,6 @@ import androidx.navigation.Navigation;
 import com.example.mytests.R;
 import com.example.mytests.databinding.FragmentSignUpBinding;
 import com.example.mytests.viewmodel.AuthViewModel;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseUser;
 
 
@@ -27,7 +26,7 @@ public class  SignUpFragment extends Fragment {
     private AuthViewModel viewModel;
     private NavController navController;
     FragmentSignUpBinding binding;
-    String role = "Students";
+    String role = "Teachers";//""Students";
     //Boolean isStudent;
     //Boolean isTeacher;
 
@@ -73,13 +72,13 @@ public class  SignUpFragment extends Fragment {
                 {
                     case R.id.student:
                         role = "Students";
-                        Snackbar.make(view, role, Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+                        //Snackbar.make(view, role, Snackbar.LENGTH_LONG)
+                        //        .setAction("Action", null).show();
                         break;
                     case R.id.teacher:
                         role = "Teachers";
-                        Snackbar.make(view, role, Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+                        //Snackbar.make(view, role, Snackbar.LENGTH_LONG)
+                        //        .setAction("Action", null).show();
                         break;
                 }
             }

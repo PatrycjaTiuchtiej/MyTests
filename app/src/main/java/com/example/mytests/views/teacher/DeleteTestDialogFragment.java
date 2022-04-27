@@ -42,7 +42,7 @@ public class DeleteTestDialogFragment extends DialogFragment {
                 Log.w("DELETE_TEST", testId);
                 Snackbar.make(view, "Test deleted", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-
+                dismiss();
             }
         });
 

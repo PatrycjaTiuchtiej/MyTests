@@ -35,8 +35,8 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="395dp"
-        android:layout_height="202dp"
+        android:layout_width="393dp"
+        android:layout_height="208dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
@@ -57,7 +57,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
-            android:text="Title"
+            android:text="geografia"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -75,8 +75,8 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="52dp"
             android:layout_marginEnd="32dp"
-            android:gravity="fill"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+            android:gravity="center"
+            android:text="To jest opis przedmiotu geografia. "
             android:textAlignment="gravity"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -86,9 +86,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerListTest"
-        android:layout_width="405dp"
+        android:layout_width="365dp"
         android:layout_height="261dp"
 
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

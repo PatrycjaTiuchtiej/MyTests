@@ -122,7 +122,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                 binding.btnOptionC.setText(questionModels.get(i - 1).getOptionC());
                 binding.btnOptionD.setText(questionModels.get(i - 1).getOptionD());
                 binding.txtAnsFeedbackTv.setText(questionModels.get(i - 1).getCorrectOption());
-                timer = 30;//questionModels.get(i - 1).getTimer();
+                timer = 20;//questionModels.get(i - 1).getTimer();
                 answer = questionModels.get(i - 1).getCorrectOption();
 
                 binding.txtQuestionNumberTv.setText(String.valueOf(currentQueNo));

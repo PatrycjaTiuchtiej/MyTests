@@ -9,11 +9,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="399dp"
+        android:layout_width="345dp"
         android:layout_height="62dp"
         app:cardBackgroundColor="@color/input_register_bg"
         app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
